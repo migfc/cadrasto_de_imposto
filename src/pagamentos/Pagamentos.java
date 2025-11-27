@@ -2,7 +2,9 @@ package pagamentos;
 
 import java.util.ArrayList;
 
+import impostos.interfase.Imposto;
+
 public class Pagamentos {
     String nomeEmpresa;
-    ArrayList impostos = new ArrayList<>();
+    ArrayList<Imposto> impostos = new ArrayList<>();
 }
