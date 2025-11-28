@@ -12,10 +12,10 @@ public class ImpostoPis implements Imposto {
         this.debito = debito;
         this.credito = credito;
     }
+    
     @Override
     public double calcular() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcular'");
+        return (debito - credito) * 1.65 / 100;
     }
 
     @Override
