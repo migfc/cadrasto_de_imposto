@@ -25,8 +25,7 @@ public class ImpostoIpi implements Imposto {
 
     @Override
     public String getDescricao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
+        return descricao;
     }
 
 }
