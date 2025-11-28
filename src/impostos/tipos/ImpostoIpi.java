@@ -3,7 +3,12 @@ package impostos.tipos;
 import impostos.interfase.Imposto;
 
 public class ImpostoIpi implements Imposto {
-
+    private String descricao;
+    private double produto;
+    private double frete;
+    private double seguro;
+    private double outrasDespesas;
+    private double aliquota;
     @Override
     public double calcular() {
         // TODO Auto-generated method stub
