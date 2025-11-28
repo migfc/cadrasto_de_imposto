@@ -10,8 +10,7 @@ public class ImpostoIpi implements Imposto {
     private double outrasDespesas;
     private double aliquota;
 
-    public ImpostoIpi(String descricao, double produto, double frete, double seguro, double outrasDespesas,
-            double aliquota) {
+    public ImpostoIpi(String descricao, double produto, double frete, double seguro, double outrasDespesas, double aliquota) {
         this.descricao = descricao;
         this.produto = produto;
         this.frete = frete;
