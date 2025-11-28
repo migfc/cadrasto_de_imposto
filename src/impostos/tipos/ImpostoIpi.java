@@ -9,7 +9,9 @@ public class ImpostoIpi implements Imposto {
     private double seguro;
     private double outrasDespesas;
     private double aliquota;
-    public ImpostoIpi(String descricao, double produto, double frete, double seguro, double outrasDespesas, double aliquota) {
+
+    public ImpostoIpi(String descricao, double produto, double frete, double seguro, double outrasDespesas,
+            double aliquota) {
         this.descricao = descricao;
         this.produto = produto;
         this.frete = frete;
@@ -17,6 +19,7 @@ public class ImpostoIpi implements Imposto {
         this.outrasDespesas = outrasDespesas;
         this.aliquota = aliquota;
     }
+    
     @Override
     public double calcular() {
         double baseCalculo = produto + frete + seguro + outrasDespesas;
@@ -27,5 +30,4 @@ public class ImpostoIpi implements Imposto {
     public String getDescricao() {
         return descricao;
     }
-
 }
