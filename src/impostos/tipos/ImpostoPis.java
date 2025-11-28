@@ -12,7 +12,7 @@ public class ImpostoPis implements Imposto {
         this.debito = debito;
         this.credito = credito;
     }
-    
+
     @Override
     public double calcular() {
         return (debito - credito) * 1.65 / 100;
@@ -20,8 +20,7 @@ public class ImpostoPis implements Imposto {
 
     @Override
     public String getDescricao() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getDescricao'");
+        return descricao;
     }
 
 }
