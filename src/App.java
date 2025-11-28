@@ -36,6 +36,17 @@ public class App {
                     pagamentos.adicionarImposto(new ImpostoIpi(descricao, produto, frete, seguro, outrasDespesas, aliquota));
                     System.out.print("Imposto IPI adicionado com sucesso!\n");
                     break;
+                case 2:
+                    System.out.println("\nAdicionar Imposto PIS");
+                    scanner.nextLine();
+                    System.out.print("digite a descricao do imposto: ");
+                    descricao = scanner.nextLine();
+                    System.out.print("digite o valor do debito: ");
+                    double debito = scanner.nextDouble();
+                    System.out.print("digite o valor do credito: ");
+                    double credito = scanner.nextDouble();
+                    pagamentos.adicionarImposto(new impostos.tipos.ImpostoPis(descricao, debito, credito));
+                    break;
                 case 0:
                     condition = false;
                     break;
