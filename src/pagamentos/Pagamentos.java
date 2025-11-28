@@ -17,4 +17,8 @@ public class Pagamentos {
         impostos.add(imposto);
     }
 
+    public List<Imposto> getImpostos() {
+        return impostos;
+    }
+
 }
