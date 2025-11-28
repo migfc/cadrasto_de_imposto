@@ -47,6 +47,16 @@ public class App {
                     double credito = scanner.nextDouble();
                     pagamentos.adicionarImposto(new impostos.tipos.ImpostoPis(descricao, debito, credito));
                     break;
+                case 3:
+                    System.out.print("\nLista de Impostos\n");
+                    for (var imposto : pagamentos.getImpostos()) {
+                        System.out.println("Descricao: " + imposto.getDescricao());
+                        System.out.println("Valor do imposto: " + imposto.calcular() + "\n");
+                    }
+                    break;
+                default:
+                    System.out.println("resposta invalida");
+                    break;
                 case 0:
                     condition = false;
                     break;
