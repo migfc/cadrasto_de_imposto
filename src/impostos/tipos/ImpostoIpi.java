@@ -19,8 +19,8 @@ public class ImpostoIpi implements Imposto {
     }
     @Override
     public double calcular() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'calcular'");
+        double baseCalculo = produto + frete + seguro + outrasDespesas;
+        return baseCalculo * (aliquota / 100);
     }
 
     @Override
