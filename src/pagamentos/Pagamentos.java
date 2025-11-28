@@ -20,5 +20,8 @@ public class Pagamentos {
     public List<Imposto> getImpostos() {
         return impostos;
     }
-
+    
+    public String getNomeEmpresa() {
+        return nomeEmpresa;
+    }
 }
