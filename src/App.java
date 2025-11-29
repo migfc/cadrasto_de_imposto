@@ -1,27 +1,55 @@
+import java.util.Scanner;
+
 import impostos.tipos.ImpostoIpi;
+import impostos.tipos.ImpostoPis;
 import pagamentos.Pagamentos;
 
 public class App {
     public static void main(String[] args) {
-        var scanner = new java.util.Scanner(System.in);
+        var scanner = new Scanner(System.in);
         System.out.print("Digite o nome da empresa: ");
         String nomeEmpresa = scanner.nextLine();
         var pagamentos = new Pagamentos(nomeEmpresa);
-        boolean condition = true;
-        do {
-            String descricao;
+
+        System.out.println("\n=== Cadastro de Impostos ===");
+        System.out.println("Digite 'pare' para encerrar o cadastro de impostos.\n");
+
+        String continuar = "";
+        while (!continuar.equals("pare")) {
             System.out.println("Menu de Impostos");
             System.out.println("1. Adicionar Imposto IPI");
-            System.out.println("2. adicionar Imposto PIS");
-            System.out.println("3. listar Impostos");
-            System.out.println("0. sair");
-            System.out.print("Escolha uma opcao: ");
-            int opcao = scanner.nextInt();
+            System.out.println("2. Adicionar Imposto PIS");
+            System.out.print("Escolha uma opcao (ou digite 'pare' para encerrar): ");
+            String entrada = scanner.nextLine();
+
+            if (entrada.equals("pare")) {
+                continuar = "pare";
+                System.out.println("\nEmpresa: " + pagamentos.getNomeEmpresa());
+                System.out.println("\n=== Impostos Calculados ===");
+                if (!pagamentos.getImpostos().isEmpty()) {
+                    double totalGeral = 0;
+                    for (var imposto : pagamentos.getImpostos()) {
+                        double valor = imposto.calcular();
+                        System.out.println("-------------------------------");
+                        System.out.println("Descricao: " + imposto.getDescricao());
+                        System.out.println("Valor do imposto: R$ " + valor);
+                        totalGeral += valor;
+                    }
+                    System.out.println("-------------------------------");
+                    System.out.println("Total de impostos: R$ " + totalGeral);
+                } else {
+                    System.out.println("Nenhum imposto foi cadastrado.");
+            }
+                break;
+            }
+
+            int opcao = Integer.parseInt(entrada);
+            String descricao;
+
             switch (opcao) {
                 case 1:
                     System.out.println("\nAdicionar Imposto IPI");
                     System.out.print("Digite a descricao do imposto: ");
-                    scanner.nextLine();
                     descricao = scanner.nextLine();
                     System.out.print("Digite o valor do produto: ");
                     double produto = scanner.nextDouble();
@@ -33,36 +61,28 @@ public class App {
                     double outrasDespesas = scanner.nextDouble();
                     System.out.print("Digite a aliquota do imposto (%): ");
                     double aliquota = scanner.nextDouble();
+                    scanner.nextLine(); // Consumir quebra de linha
                     pagamentos.adicionarImposto(new ImpostoIpi(descricao, produto, frete, seguro, outrasDespesas, aliquota));
-                    System.out.print("Imposto IPI adicionado com sucesso!\n");
+                    System.out.println("Imposto IPI adicionado com sucesso!\n");
                     break;
                 case 2:
                     System.out.println("\nAdicionar Imposto PIS");
-                    scanner.nextLine();
-                    System.out.print("digite a descricao do imposto: ");
+                    System.out.print("Digite a descricao do imposto: ");
                     descricao = scanner.nextLine();
-                    System.out.print("digite o valor do debito: ");
+                    System.out.print("Digite o valor do debito: ");
                     double debito = scanner.nextDouble();
-                    System.out.print("digite o valor do credito: ");
+                    System.out.print("Digite o valor do credito: ");
                     double credito = scanner.nextDouble();
-                    pagamentos.adicionarImposto(new impostos.tipos.ImpostoPis(descricao, debito, credito));
-                    break;
-                case 3:
-                    System.out.print("\nLista de Impostos\n");
-                    for (var imposto : pagamentos.getImpostos()) {
-                        System.out.println("Descricao: " + imposto.getDescricao());
-                        System.out.println("Valor do imposto: " + imposto.calcular() + "\n");
-                    }
+                    scanner.nextLine(); // Consumir quebra de linha
+                    pagamentos.adicionarImposto(new ImpostoPis(descricao, debito, credito));
+                    System.out.println("Imposto PIS adicionado com sucesso!\n");
                     break;
                 default:
-                    System.out.println("resposta invalida");
-                    break;
-                case 0:
-                    condition = false;
+                    System.out.println("Opcao invalida!\n");
                     break;
             }
-        } while (condition);
-        System.out.println("Encerando a aplicação");
+        }
+        System.out.println("Encerrando a aplicacao");
         scanner.close();
     }
 }
