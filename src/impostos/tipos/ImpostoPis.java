@@ -22,5 +22,4 @@ public class ImpostoPis implements Imposto {
     public String getDescricao() {
         return descricao;
     }
-
 }
